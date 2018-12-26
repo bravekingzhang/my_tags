@@ -7,12 +7,13 @@
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
+		"nodeModules": true,
 		"autoAudits": false,
-		"nodeModules": true
+		"uglifyFileName": true
 	},
 	"appid": "wx04ea575aaa4ce328",
 	"projectname": "cloud",
-	"libVersion": "2.4.2",
+	"libVersion": "2.4.3",
 	"condition": {
 		"search": {
 			"current": -1,

@@ -14,5 +14,10 @@
     "navigationBarBackgroundColor": "#F6F6F6",
     "navigationBarTitleText": "hoolly",
     "navigationBarTextStyle": "black"
+  },
+  "usingComponents": {
+    "van-dialog": "miniprogram_npm/vant-weapp/dialog/index",
+    "van-field": "miniprogram_npm/vant-weapp/field/index",
+    "van-icon": "miniprogram_npm//vant-weapp/icon/index"
   }
 }

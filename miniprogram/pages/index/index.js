@@ -1,4 +1,6 @@
 //index.js
+import Dialog from '../../miniprogram_npm/vant-weapp/dialog/dialog';
+
 const app = getApp()
 
 Page({
@@ -8,7 +10,9 @@ Page({
     tagEle: [],
     logged: false,
     takeSession: false,
-    requestResult: ''
+    requestResult: '',
+    show: false,
+    inputTag:''
   },
   innit: function () {
     const db = wx.cloud.database()
@@ -119,6 +123,9 @@ Page({
 
   addTagClick: function () {
     // wx./
+    this.setData({
+      show:true
+    })
   },
 
   getRandomTag: function () {
@@ -197,6 +204,20 @@ Page({
     })
   },
 
+  onClose(event) {
+    if (event.detail === 'confirm') {
+      // 异步关闭弹窗
+      setTimeout(() => {
+        this.setData({
+          show: false
+        });
+      }, 1000);
+    } else {
+      this.setData({
+        show: false
+      });
+    }
+  },
   // 上传图片
   doUpload: function () {
     // 选择图片

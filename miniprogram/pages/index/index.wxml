@@ -1,4 +1,5 @@
 <!-- index.wxml -->
+
 <view class="container">
   <!-- 用户 openid -->
   <view class="userinfo">
@@ -13,6 +14,18 @@
     </a>
   </view>
   <view class="addtag">
-    <button bind:tap="onAddTag" class="userinfo-avatar" style="background-image: url(../../images/icon-add.png)"></button>
+    <van-icon name="add" size="80rpx" />
   </view>
 </view>
+<van-dialog
+  use-slot
+  async-close
+  show="{{ show }}"
+  show-cancel-button
+  bind:close="onClose"
+>
+<van-field
+  value="{{ inputTag }}"
+  placeholder="请输入tag"
+/>
+</van-dialog>
