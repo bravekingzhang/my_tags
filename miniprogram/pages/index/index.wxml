@@ -1,0 +1,18 @@
+<!-- index.wxml -->
+<view class="container">
+  <!-- 用户 openid -->
+  <view class="userinfo">
+    <button open-type="getUserInfo" bindgetuserinfo="onGetUserInfo" class="userinfo-avatar" style="background-image: url({{avatarUrl}})"></button>
+    <view>
+      <button class="userinfo-nickname" bindtap="onGetOpenid">{{userInfo.nickName || ''}}</button>
+    </view>
+  </view>
+  <view class="usertags">
+    <a class="tag" wx:for="{{tagEle}}" wx:key="{{index}}" style="color:{{item.c}};opacity:{{item.o}};z-index:{{item.z}};left: {{item.x}}rpx;top: {{item.y}}rpx;transform: scale({{item.s}})">
+      {{item.title}}
+    </a>
+  </view>
+  <view class="addtag">
+    <button bind:tap="onAddTag" class="userinfo-avatar" style="background-image: url(../../images/icon-add.png)"></button>
+  </view>
+</view>
