@@ -20,5 +20,5 @@
     </view>
 </view>
 <van-dialog use-slot async-close show="{{ show }}" show-cancel-button bind:close="onClose">
-    <van-field value="{{inputTag}}" placeholder="请输入tag" bind:blur="onBlur" clearable="true"/>
+    <van-field value="{{inputTag}}" placeholder="请输入tag" bind:change="onChange" clearable="true"/>
 </van-dialog>

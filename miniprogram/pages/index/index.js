@@ -15,12 +15,10 @@ Page({
     openId: '',
     inputTag: ''
   },
+  onPullDownRefresh () {
+    this.initData()
+  },
   onReady: function () {
-    Toast.loading({
-      mask: true,
-      message: '加载中...',
-      duration: 0
-    })
     this.initData()
   },
   onLoad: function () {
@@ -56,6 +54,11 @@ Page({
     this.setData({
       inputTag: ''
     })
+    Toast.loading({
+      mask: true,
+      message: '加载中...',
+      duration: 0
+    })
     this.onGetOpenid().then(res => {
       this.setData({
         openId: res.result.openid
@@ -74,6 +77,7 @@ Page({
       _openid: this.data.openId
     }).get().then(res => {
       Toast.clear()
+      wx.stopPullDownRefresh()
       for (let i = 0; i < res.data.length; i++) {
         let tag = {
           title: res.data[i].tag,
@@ -147,10 +151,13 @@ Page({
       },
       success: res => {
         // 在返回结果中会包含新创建的记录的 _id
-        this.initData()
         wx.showToast({
           title: '新增标签成功'
         })
+        let that = this
+        setTimeout(function () {
+          that.initData()
+        }, 1500)
         console.log('[数据库] [新增记录] 成功，记录 _id: ', res._id)
       },
       fail: err => {
@@ -169,16 +176,18 @@ Page({
       data: {}
     })
   },
-  onBlur: function (event) {
-    this.data.inputTag = event.detail.value
+  onChange: function (event) {
+    console.log(event)
     this.setData({
-      inputTag: event.detail.value
+      inputTag: event.detail
     })
   },
   onClose: function (event) {
     if (event.detail === 'confirm') {
-      if (this.data.inputTag) {
+      if (this.data.inputTag && this.data.inputTag !== '') {
         this.onAddTag(this.data.inputTag)
+      } else {
+        Toast('还没输入标签呢~~')
       }
       // 异步关闭弹窗
       setTimeout(() => {
