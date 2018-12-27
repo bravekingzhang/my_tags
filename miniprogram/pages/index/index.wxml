@@ -1,31 +1,24 @@
 <!-- index.wxml -->
-
-<view class="container">
-  <!-- 用户 openid -->
-  <view class="userinfo">
-    <button open-type="getUserInfo" bindgetuserinfo="onGetUserInfo" class="userinfo-avatar" style="background-image: url({{avatarUrl}})"></button>
-    <view>
-      <button class="userinfo-nickname" bindtap="onGetOpenid">{{userInfo.nickName || ''}}</button>
-    </view>
-  </view>
-  <view class="usertags">
-    <a class="tag" wx:for="{{tagEle}}" wx:key="{{index}}" style="color:{{item.c}};opacity:{{item.o}};z-index:{{item.z}};left: {{item.x}}rpx;top: {{item.y}}rpx;transform: scale({{item.s}})">
-      {{item.title}}
-    </a>
-  </view>
-  <view class="addtag">
-    <van-icon name="add" size="80rpx" />
-  </view>
-</view>
-<van-dialog
-  use-slot
-  async-close
-  show="{{ show }}"
-  show-cancel-button
-  bind:close="onClose"
->
-<van-field
-  value="{{ inputTag }}"
-  placeholder="请输入tag"
+<van-notice-bar
+        mode="closeable"
+        text="每天给自己一个标签，写下自己的喜怒哀乐，记录与回味自己的生活"
+        backgroundColor="#827717"
+        color="#ffffff"
 />
+<view class="container">
+    <!-- 用户 openid -->
+    <view wx:if="{{tags.length > 0}}" class="usertags">
+        <a class="tag" wx:for="{{tags}}" wx:key="{{index}}"
+           style="color:{{item.c}};opacity:{{item.o}};z-index:{{item.z}};left:{{item.x}}rpx;top: {{item.y}}rpx;transform: scale({{item.scale}})">
+            {{item.title}}
+        </a>
+    </view>
+    <text wx:else class="no-more-data">还没有标签，赶紧点下方添加一个吧</text>
+    <van-toast id="van-toast"/>
+    <view class="addtag">
+        <van-icon name="add" size="100rpx" color="#827717" bind:click="addTagClick"/>
+    </view>
+</view>
+<van-dialog use-slot async-close show="{{ show }}" show-cancel-button bind:close="onClose">
+    <van-field value="{{inputTag}}" placeholder="请输入tag" bind:blur="onBlur" clearable="true"/>
 </van-dialog>

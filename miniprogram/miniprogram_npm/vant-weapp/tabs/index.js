@@ -144,7 +144,7 @@ VantComponent({
         left += (rect.width - width) / 2;
 
         _this.set({
-          lineStyle: "\n            width: " + width + "px;\n            background-color: " + color + ";\n            -webkit-transform: translateX(" + left + "px);\n            -webkit-transition-duration: " + duration + "s;\n            transform: translateX(" + left + "px);\n            transition-duration: " + duration + "s;\n          "
+          lineStyle: "\n            width: " + width + "px;\n            background-color: " + color + ";\n            -webkit-transform: translateX(" + left + "px);\n            -webkit-transition-duration: " + duration + "scale;\n            transform: translateX(" + left + "px);\n            transition-duration: " + duration + "scale;\n          "
         });
       });
     },
@@ -160,7 +160,7 @@ VantComponent({
         var width = rect.width;
 
         _this2.set({
-          trackStyle: "\n            width: " + width * _this2.child.length + "px;\n            left: " + -1 * active * width + "px;\n            transition: left " + duration + "s;\n            display: flex;\n          "
+          trackStyle: "\n            width: " + width * _this2.child.length + "px;\n            left: " + -1 * active * width + "px;\n            transition: left " + duration + "scale;\n            display: flex;\n          "
         });
 
         _this2.setTabsProps({

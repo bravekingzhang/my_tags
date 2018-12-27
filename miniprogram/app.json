@@ -12,12 +12,16 @@
     "backgroundColor": "#F6F6F6",
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#F6F6F6",
-    "navigationBarTitleText": "hoolly",
+    "navigationBarTitleText": "我的标签",
     "navigationBarTextStyle": "black"
   },
   "usingComponents": {
     "van-dialog": "miniprogram_npm/vant-weapp/dialog/index",
     "van-field": "miniprogram_npm/vant-weapp/field/index",
-    "van-icon": "miniprogram_npm//vant-weapp/icon/index"
+    "van-icon": "miniprogram_npm//vant-weapp/icon/index",
+    "van-loading": "miniprogram_npm/vant-weapp/loading/index",
+    "van-toast": "miniprogram_npm/vant-weapp/toast/index",
+    "van-notice-bar": "miniprogram_npm/vant-weapp/notice-bar/index"
+
   }
 }
