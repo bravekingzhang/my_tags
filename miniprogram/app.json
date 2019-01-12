@@ -2,7 +2,7 @@
   "pages": [
     "pages/index/index",
     "pages/motto/motto",
-    "pages/storageConsole/storageConsole",
+    "pages/mine/mine",
     "pages/databaseGuide/databaseGuide",
     "pages/addFunction/addFunction",
     "pages/deployFunctions/deployFunctions",
@@ -31,6 +31,12 @@
         "text": "人生格言",
         "iconPath": "images/motto_unselected.png",
         "selectedIconPath": "images/motto_selected.png"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "我的",
+        "iconPath": "images/mine_unselected.png",
+        "selectedIconPath": "images/mine_selected.png"
       }
     ]
   },

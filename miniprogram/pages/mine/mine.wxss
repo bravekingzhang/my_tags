@@ -1,0 +1,56 @@
+/* pages/storageConsole/storageConsole.wxss */
+@import "../../style/guide.wxss";
+
+/**index.wxss**/
+page {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+.container{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.userinfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.userinfo-avatar {
+    width: 128rpx;
+    height: 128rpx;
+    margin: 20rpx;
+    border-radius: 50%;
+}
+
+.userinfo-nickname {
+    color: #aaa;
+}
+
+.desc{
+    font-size: 33rpx;
+    color: #4a4a4a;
+}
+
+.version{
+    font-size: 14rpx;
+    color: #9b9b9b;
+    margin-bottom: 15rpx;
+}
+
+.user-icon-button {
+    width: 128rpx;
+    height: 138rpx;
+    margin: 20rpx;
+    background-size: 128rpx 128rpx;
+    background-repeat: no-repeat;
+    border: none;
+}

@@ -6,7 +6,7 @@
         color="#ffffff"
 />
 <view class="container">
-    <view wx:if="{{xx.length > 0}}" class="motto-list">
+    <view wx:if="{{mottos.length > 0}}" class="motto-list">
         <view wx:for="{{mottos}}" class="motto-card" wx:key="{{idx}}" wx:for-index="idx" wx:for-item="itemName">
             {{itemName.motto}}
         </view>
