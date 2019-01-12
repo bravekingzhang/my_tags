@@ -1,7 +1,7 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/userConsole/userConsole",
+    "pages/motto/motto",
     "pages/storageConsole/storageConsole",
     "pages/databaseGuide/databaseGuide",
     "pages/addFunction/addFunction",
@@ -15,13 +15,32 @@
     "navigationBarTitleText": "我的标签",
     "navigationBarTextStyle": "black"
   },
+  "tabBar": {
+    "custom": true,
+    "color": "#D8D8D8",
+    "selectedColor": "#FFFFFF",
+    "backgroundColor": "#5d1049",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "我的标签",
+        "iconPath": "images/tag_unselected.png",
+        "selectedIconPath": "images/tag_selected.png"
+      },
+      {
+        "pagePath": "pages/motto/motto",
+        "text": "人生格言",
+        "iconPath": "images/motto_unselected.png",
+        "selectedIconPath": "images/motto_selected.png"
+      }
+    ]
+  },
   "usingComponents": {
     "van-dialog": "miniprogram_npm/vant-weapp/dialog/index",
     "van-field": "miniprogram_npm/vant-weapp/field/index",
-    "van-icon": "miniprogram_npm//vant-weapp/icon/index",
+    "van-icon": "miniprogram_npm/vant-weapp/icon/index",
     "van-loading": "miniprogram_npm/vant-weapp/loading/index",
     "van-toast": "miniprogram_npm/vant-weapp/toast/index",
     "van-notice-bar": "miniprogram_npm/vant-weapp/notice-bar/index"
-
   }
 }

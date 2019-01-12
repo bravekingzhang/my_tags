@@ -1,0 +1,20 @@
+<!--pages/userConsole/userConsole.wxml-->
+<van-notice-bar
+        mode="closeable"
+        text="曾经你读过那么一段文字，让你明白了一个道理，记下它，是不是拿出来回味吧~"
+        backgroundColor="#5d1049"
+        color="#ffffff"
+/>
+<view class="container">
+    <view class="motto-list">
+        <view wx:for="{{mottos}}" class="motto-card" wx:key="{{idx}}" wx:for-index="idx" wx:for-item="itemName">
+            {{itemName.motto}}
+        </view>
+    </view>
+    <van-toast id="van-toast"/>
+    <view class="addtag">
+        <van-icon name="add" size="100rpx" color="#5d1049" bind:click="addTagClick"/>
+    </view>
+
+
+</view>

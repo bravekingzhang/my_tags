@@ -1,0 +1,45 @@
+/* pages/userConsole/userConsole.wxss */
+@import "../../style/guide.wxss";
+
+page {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+
+.container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: start;
+}
+
+.motto-list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center
+}
+
+.addtag {
+    align-self: flex-end;
+    margin-right: 35rpx;
+    margin-bottom: 15rpx;
+}
+
+.motto-card {
+    width: 90%;
+    background: #ff9d8d;
+    border: 1px solid #5d1049;
+    box-shadow: 0 0 2rpx 0 rgba(0, 0, 0, 0.14), 0 2rpx 2rpx 0 rgba(0, 0, 0, 0.12), 0 1rpx 3rpx 0 rgba(0, 0, 0, 0.20);
+    border-radius: 4px;
+    margin-top: 15rpx;
+    padding: 13rpx;
+    color: #4a4a4a;
+}

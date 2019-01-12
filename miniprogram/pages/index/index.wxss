@@ -21,6 +21,12 @@ page {
     margin: auto;
 }
 
+.addtag{
+    align-self: flex-end;
+    margin-right: 35rpx;
+    margin-bottom: 15rpx;
+}
+
 .no-more-data {
     margin: auto;
     font-size: 24rpx;

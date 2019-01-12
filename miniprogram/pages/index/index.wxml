@@ -2,7 +2,7 @@
 <van-notice-bar
         mode="closeable"
         text="每天给自己一个标签，写下自己的喜怒哀乐，记录与回味自己的生活"
-        backgroundColor="#827717"
+        backgroundColor="#5d1049"
         color="#ffffff"
 />
 <view class="container">
@@ -16,7 +16,7 @@
     <text wx:else class="no-more-data">还没有标签，赶紧点下方添加一个吧</text>
     <van-toast id="van-toast"/>
     <view class="addtag">
-        <van-icon name="add" size="100rpx" color="#827717" bind:click="addTagClick"/>
+        <van-icon name="add" size="100rpx" color="#5d1049" bind:click="addTagClick"/>
     </view>
 </view>
 <van-dialog use-slot async-close show="{{ show }}" show-cancel-button bind:close="onClose">
