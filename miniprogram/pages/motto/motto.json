@@ -1,3 +1,5 @@
 {
-  "navigationBarTitleText": "人生格言"
+  "usingComponents": {},
+  "navigationBarTitleText": "人生格言",
+  "enablePullDownRefresh": true
 }

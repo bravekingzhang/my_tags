@@ -1,36 +1,25 @@
 /* pages/userConsole/userConsole.wxss */
 @import "../../style/guide.wxss";
 
-page {
-    height: 100%;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-
-}
-
-.container {
-    height: 100%;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: start;
-}
-
 .motto-list {
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center
+    align-items: center;
+    overflow: scroll;
 }
 
 .addtag {
-    align-self: flex-end;
-    margin-right: 35rpx;
-    margin-bottom: 15rpx;
+    position: fixed;
+    bottom: 15rpx;
+    right: 35rpx;
+}
+
+.no-more-data {
+    position: fixed;
+    bottom: 50%;
+    font-size: 24rpx;
 }
 
 .motto-card {
@@ -42,4 +31,5 @@ page {
     margin-top: 15rpx;
     padding: 13rpx;
     color: #4a4a4a;
+    font-family: "monospace"
 }

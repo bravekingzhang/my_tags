@@ -6,15 +6,20 @@
         color="#ffffff"
 />
 <view class="container">
-    <view class="motto-list">
+    <view wx:if="{{xx.length > 0}}" class="motto-list">
         <view wx:for="{{mottos}}" class="motto-card" wx:key="{{idx}}" wx:for-index="idx" wx:for-item="itemName">
             {{itemName.motto}}
         </view>
     </view>
+    <text wx:else class="no-more-data">你还没有收录格言，赶紧点下方添加一个吧</text>
     <van-toast id="van-toast"/>
-    <view class="addtag">
-        <van-icon name="add" size="100rpx" color="#5d1049" bind:click="addTagClick"/>
-    </view>
-
-
 </view>
+
+<view class="addtag">
+    <van-icon name="add" size="100rpx" color="#5d1049" bind:click="addMottoClick"/>
+</view>
+
+<van-dialog use-slot async-close show="{{ show }}" show-cancel-button bind:close="onClose">
+    <van-field type="textarea" fixed autosize="true" value="{{inputTag}}" placeholder="请输入格言" bind:change="onChange"
+               clearable="true"/>
+</van-dialog>
