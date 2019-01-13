@@ -46,11 +46,19 @@ page {
     margin-bottom: 15rpx;
 }
 
-.user-icon-button {
+
+.user-icon-img{
     width: 128rpx;
-    height: 138rpx;
-    margin: 20rpx;
-    background-size: 128rpx 128rpx;
-    background-repeat: no-repeat;
+    height: 128rpx;
+    margin-bottom: 10rpx;
+    background: none;
+}
+.user-icon-button{
+    position: absolute;
+    top: 0rpx;
+    width: 128rpx;
+    height: 128rpx;
+    background: none;
     border: none;
 }
+

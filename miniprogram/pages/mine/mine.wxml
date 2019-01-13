@@ -1,9 +1,13 @@
 <!--index.wxml-->
 <view class="container">
     <view class="userinfo">
-        <button wx:if="{{!hasUserInfo && canIUse}}" class="user-icon-button" open-type="getUserInfo" bindgetuserinfo="getUserInfo"
-                style="background-image:url(../../images/people.png);" plain='true'>
-        </button>
+        <block wx:if="{{!hasUserInfo}}">
+            <image class='user-icon-img' src='../../images/people.png'/>
+            <button class="user-icon-button" open-type="getUserInfo" bindgetuserinfo="getUserInfo" hover-class="none">
+            </button>
+            <view class="userinfo-nickname">路人甲</view>
+        </block>
+
 
         <block wx:else>
             <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
