@@ -1,7 +1,7 @@
 <!--pages/userConsole/userConsole.wxml-->
 <van-notice-bar
         mode="closeable"
-        text="曾经你读过那么一段文字，让你明白了一个道理，记下它，是不是拿出来回味吧~"
+        text="曾经你读过那么一段文字，让你明白了一个道理，记下它，有空就拿出来回味吧~"
         backgroundColor="#5d1049"
         color="#ffffff"
 />
