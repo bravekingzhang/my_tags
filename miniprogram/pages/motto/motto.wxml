@@ -9,6 +9,7 @@
     <view wx:if="{{mottos.length > 0}}" class="motto-list">
         <view wx:for="{{mottos}}" class="motto-card" wx:key="{{idx}}" wx:for-index="idx" wx:for-item="itemName">
             {{itemName.motto}}
+            <view wx:if="{{itemName._openid =='admin'}}" class="motto-card-tag">每日推荐</view>
         </view>
     </view>
     <text wx:else class="no-more-data">你还没有收录格言，赶紧点下方添加一个吧</text>

@@ -31,5 +31,17 @@
     margin-top: 15rpx;
     padding: 13rpx;
     color: #4a4a4a;
+    font-size: 32rpx;
     font-family: "monospace"
+}
+
+.motto-card-tag{
+    color: white;
+    border-radius: 10rpx;
+    padding:9rpx 10rpx;
+    font-size: 18rpx;
+    display: inline-flex;
+    border: 1px solid #5d1049;
+    background: #5d1049;
+    float: right;
 }

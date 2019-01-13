@@ -41,7 +41,7 @@ page {
 }
 
 .version{
-    font-size: 14rpx;
+    font-size: 18rpx;
     color: #9b9b9b;
     margin-bottom: 15rpx;
 }
