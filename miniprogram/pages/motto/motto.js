@@ -74,7 +74,7 @@ Page({
 
     console.log(this.data.openId)
     db.collection('mottos').where({
-      _openid: _.eq(this.data.openId)
+      _openid: _.eq(this.data.openId).or(_.eq("admin"))
     }).get().then(res => {
       console.log(res)
       Toast.clear()
