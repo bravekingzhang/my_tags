@@ -1,6 +1,6 @@
 // pages/motto/motto.js
 import Toast from '../../miniprogram_npm/vant-weapp/toast/toast'
-
+let app = getApp()
 Page({
 
   data: {
@@ -24,16 +24,23 @@ Page({
       message: '加载中...',
       duration: 0
     })
-    this.onGetOpenid().then(res => {
+    if (app.globalData.openId) {
       this.setData({
-        openId: res.result.openid
+        openId: app.globalData.openId
       })
-      return new Promise(function (resolve) {
-        resolve(res)
-      })
-    }).then(res => {
       this.loadDataFromCloud()
-    })
+    } else {
+      this.onGetOpenid().then(res => {
+        this.setData({
+          openId: res.result.openid
+        })
+        return new Promise(function (resolve) {
+          resolve(res)
+        })
+      }).then(res => {
+        this.loadDataFromCloud()
+      })
+    }
   },
   addMottoClick: function () {
     this.setData({
@@ -74,7 +81,7 @@ Page({
 
     console.log(this.data.openId)
     db.collection('mottos').where({
-      _openid: _.eq(this.data.openId).or(_.eq("admin"))
+      _openid: _.eq(this.data.openId).or(_.eq('admin'))
     }).get().then(res => {
       console.log(res)
       Toast.clear()

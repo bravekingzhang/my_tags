@@ -1,6 +1,7 @@
 // miniprogram/pages/grocery.js
 import Toast from '../../miniprogram_npm/vant-weapp/toast/toast'
 
+let app = getApp()
 Page({
 
   /**
@@ -10,7 +11,15 @@ Page({
     windowHeight: 664,
     grocery_list: [],
     question: '',
-    show: false
+    show: false,
+    userInfo: null,
+    openId: ''
+  },
+  onShareAppMessage: function () {
+    return {
+      title: '浪矢爷爷在解忧杂货店等你',
+      path: 'pages/grocery/grocery'
+    }
   },
 
   addQuestionClick: function () {
@@ -45,7 +54,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    if (app.globalData.userInfo) {
+      this.setData({
+        userInfo: app.globalData.userInfo
+      })
+    }
   },
 
   onPullDownRefresh () {
@@ -72,26 +85,50 @@ Page({
       message: '加载中...',
       duration: 0
     })
-    this.onGetOpenid().then(res => {
+    if (app.globalData.openId) {
       this.setData({
-        openId: res.result.openid
+        openId: app.globalData.openId
       })
-      return new Promise(function (resolve) {
-        resolve(res)
-      })
-    }).then(res => {
       this.loadDataFromCloud()
-    })
+    } else {
+      this.onGetOpenid().then(res => {
+        this.setData({
+          openId: res.result.openid
+        })
+        return new Promise(function (resolve) {
+          resolve(res)
+        })
+      }).then(res => {
+        this.loadDataFromCloud()
+      })
+    }
+
   },
   onAddQuestion: function (question) {
     const db = wx.cloud.database()
     let that = this
+    let gender = '不男不女'
+    let nick = '路人甲'
+    let avatarUrl = ''
+    if (this.data.userInfo) {
+      if (this.data.userInfo.gender === 1) {
+        gender = '男'
+      } else {
+        gender = '女'
+      }
+      nick = this.data.userInfo.nickName
+      avatarUrl = this.data.userInfo.avatarUrl
+    }
     db.collection('grocery').add({
       data: {
         question: question,
         answer_status: 0,
         ctime: that.getFormatDate(that.getTimeStamp()),
-        to: 'admin'
+        to: 'admin',
+        gender: gender,
+        nick: nick,
+        avatarUrl: avatarUrl
+
       },
       success: res => {
         // 在返回结果中会包含新创建的记录的 _id

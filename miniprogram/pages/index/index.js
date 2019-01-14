@@ -1,7 +1,7 @@
 //index.js
 import Toast from '../../miniprogram_npm/vant-weapp/toast/toast'
 
-const app = getApp()
+let app = getApp()
 let interval = undefined
 Page({
   data: {
@@ -25,6 +25,20 @@ Page({
         url: '../chooseLib/chooseLib'
       })
     }
+    // 获取用户信息
+    wx.getSetting({
+      success: res => {
+        if (res.authSetting['scope.userInfo']) {
+          // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
+          wx.getUserInfo({
+            success: res => {
+              app.globalData.userInfo = res.userInfo
+              console.log(res)
+            }
+          })
+        }
+      }
+    })
   },
 
   initData: function () {
@@ -39,16 +53,24 @@ Page({
       message: '加载中...',
       duration: 0
     })
-    this.onGetOpenid().then(res => {
+    if (app.globalData.openId) {
       this.setData({
-        openId: res.result.openid
+        openId: app.globalData.openId
       })
-      return new Promise(function (resolve) {
-        resolve(res)
-      })
-    }).then(res => {
       this.loadDataFromCloud()
-    })
+    } else {
+      this.onGetOpenid().then(res => {
+        this.setData({
+          openId: res.result.openid
+        })
+        app.globalData.openId = res.result.openid
+        return new Promise(function (resolve) {
+          resolve(res)
+        })
+      }).then(res => {
+        this.loadDataFromCloud()
+      })
+    }
   },
   loadDataFromCloud: function () {
     const db = wx.cloud.database()

@@ -8,27 +8,26 @@ Page({
     desc: '随心，随意，快乐生活~',
     userInfo: {},
     hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    white_list: ['oKhIL0bWE_ZZFqIo4nPqJJYu5YaA', 'oKhIL0bR_eykHB1LAg6gX7Xy1LwI'],
+    openId: '',
+    show_grocery_list: false
   },
   onLoad: function () {
-    // 获取用户信息
-    wx.getSetting({
-      success: res => {
-        if (res.authSetting['scope.userInfo']) {
-          // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
-          wx.getUserInfo({
-            success: res => {
-              this.setData({
-                // avatarUrl: res.userInfo.avatarUrl,
-                userInfo: res.userInfo,
-                hasUserInfo: true
-              })
-              console.log(res)
-            }
-          })
-        }
-      }
-    })
+    if (app.globalData.openId) {
+      this.setData({
+        openId: app.globalData.openId,
+        show_grocery_list: this.data.white_list.indexOf(app.globalData.openId) !== -1
+      })
+    } else {
+      this.onGetOpenid().then(res => {
+        this.setData({
+          openId: res.result.openid,
+          show_grocery_list: this.data.white_list.indexOf(app.globalData.openId) !== -1
+        })
+      })
+    }
+    //获取用户基本信息
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -67,6 +66,11 @@ Page({
   feedback: function (e) {
     wx.navigateTo({
       url: '../../pages/feedback/feedback'
+    })
+  },
+  grocery_answer: function () {
+    wx.navigateTo({
+      url: '../../pages/grocery_list/grocery_list'
     })
   }
 })

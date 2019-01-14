@@ -16,6 +16,10 @@
         <view class="feed-back-text">反馈</view>
         <van-icon class="feed-back-icon" name="arrow" size="45rpx" color="#5d1049"/>
     </view>
+    <view wx:if="{{show_grocery_list}}" class="feed-back" bindtap="grocery_answer">
+        <view class="feed-back-text">杂货店问题</view>
+        <van-icon class="feed-back-icon" name="arrow" size="45rpx" color="#5d1049"/>
+    </view>
     <view class="desc">
         <text class="user-motto">{{desc}}</text>
     </view>

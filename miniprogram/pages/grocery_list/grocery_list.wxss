@@ -1,0 +1,24 @@
+/* miniprogram/pages/grocery_list/grocery_list.wxss */
+.container{
+    background: #f5f5f5;
+}
+.questions-list {
+    padding: 25rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.question-item-card {
+    margin-top: 15rpx;
+    width: 90%;
+    background: #ffffff;
+    opacity: 0.83;
+    border-radius: 5rpx;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    padding: 25rpx;
+    flex-shrink: 0;
+}
