@@ -3,10 +3,11 @@
     "pages/index/index",
     "pages/motto/motto",
     "pages/mine/mine",
+    "pages/feedback/feedback",
     "pages/databaseGuide/databaseGuide",
     "pages/addFunction/addFunction",
-    "pages/deployFunctions/deployFunctions",
-    "pages/chooseLib/chooseLib"
+    "pages/chooseLib/chooseLib",
+    "pages/grocery/grocery"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -33,6 +34,12 @@
         "selectedIconPath": "images/motto_selected.png"
       },
       {
+        "pagePath": "pages/grocery/grocery",
+        "text": "解忧杂货店",
+        "iconPath": "images/mail_unselected.png",
+        "selectedIconPath": "images/mail_selected.png"
+      },
+      {
         "pagePath": "pages/mine/mine",
         "text": "我的",
         "iconPath": "images/mine_unselected.png",
@@ -46,6 +53,8 @@
     "van-icon": "miniprogram_npm/vant-weapp/icon/index",
     "van-loading": "miniprogram_npm/vant-weapp/loading/index",
     "van-toast": "miniprogram_npm/vant-weapp/toast/index",
-    "van-notice-bar": "miniprogram_npm/vant-weapp/notice-bar/index"
+    "van-notice-bar": "miniprogram_npm/vant-weapp/notice-bar/index",
+    "van-button": "miniprogram_npm/vant-weapp/button/index",
+    "van-rate": "miniprogram_npm/vant-weapp/rate/index"
   }
 }

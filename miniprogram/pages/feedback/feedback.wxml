@@ -1,0 +1,27 @@
+<!--pages/deployFunctions/deployFunctions.wxml-->
+<view class="container">
+
+    <view class="feed-back-rate">
+        <view class="feed-back-rate-text">评分</view>
+        <van-rate class="feed-back-rate-widget"
+                  value="{{ rate }}"
+                  icon="like"
+                  void-icon="like-o"
+                  color="#5d1049"
+                  bind:change="onChange"
+        />
+    </view>
+    <van-field
+            class="feed-back-text-field"
+            value=""
+            label="留言"
+            type="textarea"
+            placeholder="请输入留言"
+            autosize
+            border="true"
+            bind:blur="onInputFinished"
+    />
+    <van-button class="feed-back-button" size="large" bind:click="sendFeedBack" type="primary">反馈</van-button>
+
+</view>
+

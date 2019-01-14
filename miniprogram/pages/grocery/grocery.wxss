@@ -1,0 +1,64 @@
+/* miniprogram/pages/grocery.wxss */
+
+.container {
+
+}
+
+.image-background {
+    position: absolute;
+    z-index: -9999;
+}
+
+.questions-list {
+    padding: 25rpx;
+    overflow: scroll;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.question-item-card {
+    margin-top: 15rpx;
+    width: 90%;
+    background: #ffffff;
+    opacity: 0.83;
+    border-radius: 5rpx;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    padding: 25rpx;
+    flex-shrink: 0;
+}
+
+.question-item-card-writer {
+    color: #F6A623;
+    font-size: 20rpx;
+    font-style: italic;
+    font-weight: bold;
+    align-self: start;
+}
+
+.question-item-card-reply {
+    color: #5D1049;
+    font-size: 25rpx;
+}
+
+.question-item-card-content {
+    margin-top: 15rpx;
+    margin-bottom: 22rpx;
+    color: #4a4a4a;
+    font-size: 24rpx;
+}
+
+.question-item-card-time {
+
+    color: #9b9b9b;
+    font-size: 18rpx;
+}
+
+.add-question {
+    position: fixed;
+    bottom: 15rpx;
+    right: 35rpx;
+}

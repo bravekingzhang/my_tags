@@ -5,14 +5,16 @@
             <image class='user-icon-img' src='../../images/people.png'/>
             <button class="user-icon-button" open-type="getUserInfo" bindgetuserinfo="getUserInfo" hover-class="none">
             </button>
-            <view class="userinfo-nickname">路人甲</view>
+            <view class="userinfo-nickname-un-login">(路人甲)点击图像登录</view>
         </block>
-
-
         <block wx:else>
             <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
             <text class="userinfo-nickname">{{userInfo.nickName}}</text>
         </block>
+    </view>
+    <view class="feed-back" bindtap="feedback">
+        <view class="feed-back-text">反馈</view>
+        <van-icon class="feed-back-icon" name="arrow" size="45rpx" color="#5d1049"/>
     </view>
     <view class="desc">
         <text class="user-motto">{{desc}}</text>

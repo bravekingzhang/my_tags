@@ -4,7 +4,7 @@ const app = getApp()
 
 Page({
   data: {
-    version: '当前版本：版本1.1.0',
+    version: '当前版本：版本1.2.0',
     desc: '随心，随意，快乐生活~',
     userInfo: {},
     hasUserInfo: false,
@@ -62,6 +62,11 @@ Page({
     this.setData({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
+    })
+  },
+  feedback: function (e) {
+    wx.navigateTo({
+      url: '../../pages/feedback/feedback'
     })
   }
 })

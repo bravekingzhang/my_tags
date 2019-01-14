@@ -10,18 +10,42 @@ page {
     justify-content: space-between;
 
 }
-.container{
+
+.container {
     height: 100%;
+    padding: 5%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     align-items: center;
 }
 
 .userinfo {
+    width: 100%;
+    height: 330rpx;
+    background-color: white;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+}
+
+.feed-back {
+    width: 100%;
+    margin-top: 40rpx;
+    height: 100rpx;
+    background-color: white;
+    display: flex;
+    font-size: 33rpx;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.feed-back-text{
+    margin-left: 28rpx;
+}
+
+.feed-back-icon{
+    margin-right: 28rpx;
 }
 
 .userinfo-avatar {
@@ -34,31 +58,39 @@ page {
 .userinfo-nickname {
     color: #aaa;
 }
+.userinfo-nickname-un-login{
+    color: #aaa;
+    margin-top: 15rpx;
+    font-size: 28rpx;
+}
 
-.desc{
+.desc {
+    margin-top: 55rpx;
     font-size: 33rpx;
     color: #4a4a4a;
 }
 
-.version{
+.version {
+    margin-top: 100rpx;
     font-size: 18rpx;
     color: #9b9b9b;
     margin-bottom: 15rpx;
 }
 
-
-.user-icon-img{
+.user-icon-img {
     width: 128rpx;
     height: 128rpx;
     margin-bottom: 10rpx;
     background: none;
 }
-.user-icon-button{
+
+.user-icon-button {
     position: absolute;
-    top: 0rpx;
-    width: 128rpx;
-    height: 128rpx;
+    top: 105rpx;
+    width: 137rpx;
+    height: 137rpx;
     background: none;
-    border: none;
+    border: white;
 }
+
 
