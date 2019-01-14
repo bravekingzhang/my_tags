@@ -105,9 +105,12 @@ Page({
         Toast.success({
           mask: true,
           message: '回复成功~',
-          duration: 0
+          duration: 1500
         })
-        wx.navigateBack()
+        setTimeout(function () {
+          wx.navigateBack()
+        }, 1500)
+
       },
       fail: err => {
         wx.showToast({
