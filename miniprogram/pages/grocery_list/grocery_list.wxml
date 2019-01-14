@@ -3,7 +3,14 @@
 
     <view class="questions-list">
         <view class="question-item-card" wx:for="{{grocery_list}}" wx:for-index="idx" wx:key="idx" wx:for-item="item">
-            {{item}}
+            <view class="question-item-card-user-info">
+                <image class="question-item-card-icon" src="{{item.avatarUrl}}"></image>
+                <text class="question-item-card-nick">{{item.nick}}</text>
+                <text class="question-item-card-gender">{{item.gender}}</text>
+                <text class="question-item-card-time">{{item.ctime}}</text>
+            </view>
+            <view class="question-item-card-divider"></view>
+            <text class="question-item-card-content">{{item.question}}</text>
         </view>
     </view>
 </view>
