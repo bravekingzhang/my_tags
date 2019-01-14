@@ -2,7 +2,7 @@
 <view class="container">
 
     <view class="questions-list">
-        <view class="question-item-card" wx:for="{{array}}" wx:for-index="idx" wx:key="idx" wx:for-item="item">
+        <view class="question-item-card" wx:for="{{grocery_list}}" wx:for-index="idx" wx:key="idx" wx:for-item="item">
             {{item}}
         </view>
     </view>
