@@ -135,29 +135,9 @@ Page({
       data: {}
     })
   },
-  onChange: function (event) {
-    console.log(event)
-    this.setData({
-      question: event.detail
+  onGroceryItemClick (e) {
+    wx.navigateTo({
+      url: '../reply_grocery/reply_grocery?id=' + e.currentTarget.dataset.id
     })
-  },
-  onClose: function (event) {
-    if (event.detail === 'confirm') {
-      if (this.data.question && this.data.question !== '') {
-        this.onAddQuestion(this.data.question)
-      } else {
-        Toast('浪矢爷爷还不知道你要问什么疑惑呢~')
-      }
-      // 异步关闭弹窗
-      setTimeout(() => {
-        this.setData({
-          show: false
-        })
-      }, 1000)
-    } else {
-      this.setData({
-        show: false
-      })
-    }
   }
 })

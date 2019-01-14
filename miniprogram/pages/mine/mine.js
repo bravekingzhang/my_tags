@@ -1,29 +1,49 @@
 //index.js
 //获取应用实例
+import Toast from '../../miniprogram_npm/vant-weapp/toast/toast'
+
 const app = getApp()
 
 Page({
   data: {
-    version: '当前版本：版本1.2.0',
+    version: '1.2.0',
     desc: '随心，随意，快乐生活~',
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    white_list: ['oKhIL0bWE_ZZFqIo4nPqJJYu5YaA', 'oKhIL0bR_eykHB1LAg6gX7Xy1LwI'],
+    white_list: [],
     openId: '',
-    show_grocery_list: false
+    show_grocery_list: false,
+    pref:null
+  },
+  loadDataFromCloud () {
+    const db = wx.cloud.database()
+    const _ = db.command
+
+    console.log(this.data.openId)
+    db.collection('prefs').get().then(res => {
+      Toast.clear()
+      wx.stopPullDownRefresh()
+      let data = res.data[0];
+      let white_list = data.white_list
+      let version = data.version
+      this.setData({
+        pref:data,
+        version:version,
+        white_list: white_list,
+        show_grocery_list: white_list.indexOf(this.data.openId) !== -1
+      })
+    })
   },
   onLoad: function () {
     if (app.globalData.openId) {
       this.setData({
         openId: app.globalData.openId,
-        show_grocery_list: this.data.white_list.indexOf(app.globalData.openId) !== -1
       })
     } else {
       this.onGetOpenid().then(res => {
         this.setData({
           openId: res.result.openid,
-          show_grocery_list: this.data.white_list.indexOf(app.globalData.openId) !== -1
         })
       })
     }
@@ -54,6 +74,7 @@ Page({
         }
       })
     }
+    this.loadDataFromCloud()
   },
   getUserInfo: function (e) {
     console.log(e)

@@ -1,0 +1,23 @@
+<!--miniprogram/pages/reply_grocery/reply_grocery.wxml-->
+<view class="container">
+    <view class="reply-grocery-user-info" data-id="{{grocery._id}}">
+        <image class="question-item-card-icon" src="{{grocery.avatarUrl}}"></image>
+        <text class="question-item-card-nick">{{grocery.nick}}</text>
+        <text class="question-item-card-gender">{{grocery.gender}}</text>
+        <text class="question-item-card-time">{{grocery.ctime}}</text>
+    </view>
+    <van-panel class="reply-grocery-panel" title="他的疑惑：" desc="{{grocery.question}}" status="{{grocery.answer_status==1?'已解决':''}}" use-footer-slot>
+        <van-field
+                value="{{ message }}"
+                label="留言"
+                type="textarea"
+                placeholder="请输入留言"
+                autosize
+                bind:change="onChange"
+        />
+        <view slot="footer">
+            <van-button size="large" type="primary" bind:click="onPost">确定</van-button>
+        </view>
+    </van-panel>
+    <van-toast id="van-toast"/>
+</view>
