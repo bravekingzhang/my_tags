@@ -8,7 +8,7 @@
         <view wx:if="{{grocery_list.length==0}}" class="question-item-card">
             <text class="question-item-card-writer">亲爱的杂货店顾客：</text>
             <text class="question-item-card-content">
-                很高兴你能够来到浪矢杂货店，不论你是来自过去，还是未来，如果你遇到麻烦了，都可以点右下角给浪矢爷爷留言，他会在不确定的时间点，也许是过去，也是是未来，给你回复。
+                很高兴你能够来到浪矢杂货店，不论你是来自过去，还是未来，如果你遇到麻烦了，都可以点右下角给浪矢爷爷留言，他会在不确定的时间点，也许是过去，也许是未来，给你回复。
             </text>
         </view>
         <view class="question-item-card" wx:for="{{grocery_list}}" wx:for-index="idx" wx:key="idx" wx:for-item="item">
