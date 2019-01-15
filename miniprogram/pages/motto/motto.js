@@ -1,5 +1,6 @@
 // pages/motto/motto.js
 import Toast from '../../miniprogram_npm/vant-weapp/toast/toast'
+
 let app = getApp()
 Page({
 
@@ -14,6 +15,9 @@ Page({
   },
   onReady: function () {
     this.initData()
+  },
+  onShareAppMessage: function () {
+
   },
   initData: function () {
     this.setData({

@@ -19,6 +19,9 @@ Page({
   onReady: function () {
     this.initData()
   },
+  onShareAppMessage: function () {
+
+  },
   onLoad: function () {
     if (!wx.cloud) {
       wx.redirectTo({
