@@ -42,7 +42,8 @@ Page({
       wx.stopPullDownRefresh()
       if (res.data.length >= 1) {
         this.setData({
-          grocery: res.data[0]
+          grocery: res.data[0],
+          message: res.data[0].answer
         })
       } else {
         wx.navigateBack()
@@ -75,33 +76,11 @@ Page({
     const db = wx.cloud.database()
     db.collection('grocery').doc(this.data.grocery._id).update({
       data: {
-        'answer_status': 1
-      }
-    }).then(res => {
-      this.addMessage(message)
-    })
-
-  },
-  //
-  addMessage: function (message) {
-    const db = wx.cloud.database()
-    let that = this
-    let gender = '管理员'
-    let nick = '货郎大叔'
-    let avatarUrl = 'cloud://hoolly-0100c0.686f-hoolly-0100c0/boss.png'
-    db.collection('grocery').add({
-      data: {
-        question: message,
-        answer_status: 1,
-        ctime: '来自不明时空',
-        to: that.data.grocery._openid,
-        gender: gender,
-        nick: nick,
-        avatarUrl: avatarUrl
-
+        'answer_status': 1,
+        'answer': message
       },
       success: res => {
-        // 在返回结果中会包含新创建的记录的 _id
+      // 在返回结果中会包含新创建的记录的 _id
         Toast.success({
           mask: true,
           message: '回复成功~',
@@ -110,7 +89,6 @@ Page({
         setTimeout(function () {
           wx.navigateBack()
         }, 1500)
-
       },
       fail: err => {
         wx.showToast({
@@ -120,8 +98,8 @@ Page({
         console.error('[数据库] [新增记录] 失败：', err)
       }
     })
-  },
 
+  },
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */

@@ -13,6 +13,10 @@
             <view class="question-item-card-content">
                 <text>{{item.question}}</text>
             </view>
+            <view class="question-item-card-answer">
+                <text class="question-item-card-answer-has-found" wx:if="{{item.answer}}">{{item.answer}}</text>
+                <text class="question-item-card-answer-not-found" wx:else>还未解答疑惑，赶紧帮Ta解答吧</text>
+            </view>
 
         </view>
         <van-toast id="van-toast"/>

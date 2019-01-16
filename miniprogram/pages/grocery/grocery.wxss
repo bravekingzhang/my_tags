@@ -50,6 +50,16 @@
     font-size: 25rpx;
 }
 
+.question-item-card-content-place-holder {
+    margin-top: 22rpx;
+    margin-bottom: 22rpx;
+    margin-left: 12rpx;
+    color: #ffffff;
+    align-self: flex-start;
+    text-underline: #f5f5f5;
+    font-size: 24rpx;
+}
+
 .question-item-card-content {
     margin-top: 22rpx;
     margin-bottom: 22rpx;
@@ -109,3 +119,4 @@
     bottom: 15rpx;
     right: 35rpx;
 }
+

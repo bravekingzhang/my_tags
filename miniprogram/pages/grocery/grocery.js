@@ -1,5 +1,6 @@
 // miniprogram/pages/grocery.js
 import Toast from '../../miniprogram_npm/vant-weapp/toast/toast'
+import Dialog from '../../miniprogram_npm/vant-weapp/dialog/dialog'
 
 let app = getApp()
 Page({
@@ -23,9 +24,50 @@ Page({
   },
 
   addQuestionClick: function () {
-    this.setData({
-      show: true
-    })
+    if (this.data.userInfo) {
+      this.setData({
+        show: true
+      })
+    } else {
+      Dialog.confirm({
+        confirmButtonText: '授权',
+        confirmButtonOpenType: 'getUserInfo',
+        title: '温馨提示',
+        message: '亲爱的召唤师，浪矢老爷爷需要了解您的基本信息才能给出较为准确的答复哟~'
+      }).then(() => {
+        wx.getUserInfo({
+          success: res => {
+            app.globalData.userInfo = res.userInfo
+            this.setData({
+              userInfo: res.userInfo,
+              show: true
+            })
+          }
+        })
+        // wx.openSetting({
+        //   success (res) {
+        //     console.log(res.authSetting)
+        //     // res.authSetting = {
+        //     //   "scope.userInfo": true,
+        //     //   "scope.userLocation": true
+        //     // }
+        //     if (res.authSetting['scope.userInfo']) {
+        //       wx.getUserInfo({
+        //         success (res) {
+        //           app.globalData.userInfo = res.userInfo
+        //           that.setData({
+        //             userInfo: res.userInfo
+        //           })
+        //         }
+        //       })
+        //     }
+        //   }
+        // })
+
+      }).catch(() => {
+        // on cancel
+      })
+    }
   },
   getFormatDate: function (timestamp) {
     // Create a new JavaScript Date object based on the timestamp
@@ -58,7 +100,18 @@ Page({
       this.setData({
         userInfo: app.globalData.userInfo
       })
+    } else {
+      let that = this
+      wx.getUserInfo({
+        success (res) {
+          app.globalData.userInfo = res.userInfo
+          that.setData({
+            userInfo: res.userInfo
+          })
+        }
+      })
     }
+
   },
 
   onPullDownRefresh () {
@@ -74,6 +127,23 @@ Page({
       windowHeight: windowHeight
     })
     this.initData()
+  },
+  onShow: function () {
+    // 查看是否授权
+    wx.getSetting({
+      success (res) {
+        if (res.authSetting['scope.userInfo']) {
+          // 已经授权，可以直接调用 getUserInfo 获取头像昵称
+          wx.getUserInfo({
+            success (res) {
+              this.setData({
+                userInfo: res.userInfo
+              })
+            }
+          })
+        }
+      }
+    })
   },
   initData: function () {
     this.setData({

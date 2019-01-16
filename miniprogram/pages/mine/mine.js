@@ -14,7 +14,7 @@ Page({
     white_list: [],
     openId: '',
     show_grocery_list: false,
-    pref:null
+    pref: null
   },
   loadDataFromCloud () {
     const db = wx.cloud.database()
@@ -24,12 +24,12 @@ Page({
     db.collection('prefs').get().then(res => {
       Toast.clear()
       wx.stopPullDownRefresh()
-      let data = res.data[0];
+      let data = res.data[0]
       let white_list = data.white_list
       let version = data.version
       this.setData({
-        pref:data,
-        version:version,
+        pref: data,
+        version: version,
         white_list: white_list,
         show_grocery_list: white_list.indexOf(this.data.openId) !== -1
       })
@@ -38,12 +38,12 @@ Page({
   onLoad: function () {
     if (app.globalData.openId) {
       this.setData({
-        openId: app.globalData.openId,
+        openId: app.globalData.openId
       })
     } else {
       this.onGetOpenid().then(res => {
         this.setData({
-          openId: res.result.openid,
+          openId: res.result.openid
         })
       })
     }
@@ -64,13 +64,20 @@ Page({
       }
     } else {
       // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
+      wx.getSetting({
         success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
+          if (res.authSetting['scope.userInfo']) {
+            // 已经授权，可以直接调用 getUserInfo 获取头像昵称
+            wx.getUserInfo({
+              success: res => {
+                app.globalData.userInfo = res.userInfo
+                this.setData({
+                  userInfo: res.userInfo,
+                  hasUserInfo: true
+                })
+              }
+            })
+          }
         }
       })
     }
