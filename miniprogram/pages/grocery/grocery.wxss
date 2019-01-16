@@ -39,6 +39,12 @@
     align-self: start;
 }
 
+.question-item-card-writer-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
 .question-item-card-reply {
     color: #5D1049;
     font-size: 25rpx;
@@ -49,6 +55,36 @@
     margin-bottom: 22rpx;
     color: #4a4a4a;
     font-size: 24rpx;
+}
+
+.question-item-card-answer {
+    padding: 15rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+    margin-top: 15rpx;
+    opacity: 0.83;
+    background: #E9DB2A;
+    border-radius: 4rpx;
+}
+
+.question-item-card-answer-reply {
+    align-self: flex-start;
+    font-size: 18rpx;
+    color: #9013FE;
+}
+
+.question-item-card-answer-content {
+    margin-top: 25rpx;
+    font-size: 20rpx;
+    margin-bottom: 25rpx;
+}
+
+.question-item-card-answer-time {
+    font-size: 18rpx;
+    color: #9B9B9B;
+    align-self: flex-end;
 }
 
 .question-item-card-time {
