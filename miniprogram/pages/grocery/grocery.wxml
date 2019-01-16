@@ -27,6 +27,7 @@
                 </view>
                 <text class="question-item-card-answer-content">{{item.answer}}</text>
 
+                <text class="question-item-card-answer-author">From:浪矢老爷爷</text>
             </view>
         </view>
     </view>

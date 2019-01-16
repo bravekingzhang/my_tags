@@ -161,9 +161,6 @@ Page({
     db.collection('grocery').where(_.or([
       {
         _openid: _.eq(this.data.openId)
-      },
-      {
-        to: _.eq(this.data.openId)
       }
     ])).get().then(res => {
       console.log(res)
