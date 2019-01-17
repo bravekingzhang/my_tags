@@ -131,11 +131,11 @@ Page({
   onShow: function () {
     // 查看是否授权
     wx.getSetting({
-      success (res) {
+      success: res => {
         if (res.authSetting['scope.userInfo']) {
           // 已经授权，可以直接调用 getUserInfo 获取头像昵称
           wx.getUserInfo({
-            success (res) {
+            success: res => {
               this.setData({
                 userInfo: res.userInfo
               })
@@ -193,12 +193,12 @@ Page({
       data: {
         question: question,
         answer_status: 0,
+        answer: '',
         ctime: that.getFormatDate(that.getTimeStamp()),
         to: 'admin',
         gender: gender,
         nick: nick,
         avatarUrl: avatarUrl
-
       },
       success: res => {
         // 在返回结果中会包含新创建的记录的 _id

@@ -43,7 +43,7 @@ Page({
       if (res.data.length >= 1) {
         this.setData({
           grocery: res.data[0],
-          message: res.data[0].answer
+          message: res.data[0].answer || ''
         })
       } else {
         wx.navigateBack()
@@ -73,32 +73,32 @@ Page({
   },
   //设置提问人的状态已被回答
   setStates: function (message) {
-    const db = wx.cloud.database()
-    db.collection('grocery').doc(this.data.grocery._id).update({
+    console.log(message)
+    console.log(this.data.grocery._id)
+    // 当然 promise 方式也是支持的
+    //update方法需要使用云函数才能成功，呵呵
+    wx.cloud.callFunction({
+      name: 'grocery',
       data: {
-        'answer_status': 1,
-        'answer': message
-      },
-      success: res => {
-      // 在返回结果中会包含新创建的记录的 _id
-        Toast.success({
-          mask: true,
-          message: '回复成功~',
-          duration: 1500
-        })
-        setTimeout(function () {
-          wx.navigateBack()
-        }, 1500)
-      },
-      fail: err => {
-        wx.showToast({
-          icon: 'none',
-          title: '糟糕，有bug~'
-        })
-        console.error('[数据库] [新增记录] 失败：', err)
+        _id: this.data.grocery._id,
+        message: message
       }
+    }).then(res => {
+      Toast.success({
+        mask: true,
+        message: '回复成功~',
+        duration: 1500
+      })
+      setTimeout(function () {
+        wx.navigateBack()
+      }, 1500)
+    }).catch(err => {
+      wx.showToast({
+        icon: 'none',
+        title: '糟糕，有bug~'
+      })
+      console.error('[数据库] [新增记录] 失败：', err)
     })
-
   },
   /**
    * 页面相关事件处理函数--监听用户下拉动作

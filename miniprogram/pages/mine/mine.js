@@ -35,6 +35,13 @@ Page({
       })
     })
   },
+  onGetOpenid: function () {
+    // 调用云函数
+    return wx.cloud.callFunction({
+      name: 'login',
+      data: {}
+    })
+  },
   onLoad: function () {
     if (app.globalData.openId) {
       this.setData({

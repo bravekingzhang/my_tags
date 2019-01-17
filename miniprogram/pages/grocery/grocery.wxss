@@ -92,6 +92,7 @@
 .question-item-card-answer-content {
     margin-top: 25rpx;
     font-size: 20rpx;
+    align-self: flex-start;
     margin-bottom: 25rpx;
 }
 
