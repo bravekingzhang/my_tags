@@ -12,13 +12,20 @@ Page({
     show: false,
     openId: '',
     inputTag: '',
-    formid:''
+    formid:'',
+    showBtn:'false'
   },
   onPullDownRefresh () {
     this.initData()
   },
   onReady: function () {
+    this.setData({
+      showBtn: app.globalData.showBtn
+    })
     this.initData()
+  },
+  onShareAppMessage: function () {
+
   },
   onLoad: function () {
     if (!wx.cloud) {

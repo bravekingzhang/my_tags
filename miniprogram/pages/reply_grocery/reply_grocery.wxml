@@ -7,7 +7,7 @@
     <text class="question-item-card-time">{{grocery.ctime}}</text>
   </view>
   <van-panel class="reply-grocery-panel" title="他的疑惑：" desc="{{grocery.question}}" status="{{grocery.answer_status==1?'已解决':''}}" use-footer-slot>
-    <van-field value="{{ message }}" label="留言" type="textarea" placeholder="请输入留言" autosize bind:change="onChange" />
+    <van-field size='large' value="{{ message }}" label="留言" type="textarea" placeholder="请输入留言" autosize bind:change="onChange" />
     <view slot="footer">
       <form report-submit='true' bindsubmit='onPost'>
         <button type='primary' form-type='submit'>确定</button>

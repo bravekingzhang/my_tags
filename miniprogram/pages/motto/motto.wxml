@@ -16,7 +16,7 @@
     <van-toast id="van-toast"/>
 </view>
 
-<view class="addtag">
+<view class="addtag" wx:if="{{showBtn}}">
     <van-icon name="add" size="100rpx" color="#5d1049" bind:click="addMottoClick"/>
 </view>
 

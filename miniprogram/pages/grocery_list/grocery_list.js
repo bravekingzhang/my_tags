@@ -1,5 +1,6 @@
 // miniprogram/pages/grocery_list/grocery_list.js
 import Toast from '../../miniprogram_npm/vant-weapp/toast/toast'
+const regeneratorRuntime = require('../../utils/runtime.js');
 
 let app = getApp()
 Page({
@@ -31,6 +32,10 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
+    // this.initData()
+    
+  },
+  onShow:function(){
     this.initData()
   },
   initData: function () {
@@ -107,24 +112,46 @@ Page({
       }
     })
   },
-  loadDataFromCloud () {
+  async loadDataFromCloud () {
+    const MAX_LIMIT = 20
     const db = wx.cloud.database()
     let currentGrocerys = []
     const _ = db.command
 
     console.log(this.data.openId)
-    db.collection('grocery').where(_.or([
+    // 先取出集合记录总数
+    const countResult = await db.collection('grocery').where(_.or([
       {
         to: _.eq('admin')
       }
-    ])).get().then(res => {
-      console.log(res)
-      Toast.clear()
-      wx.stopPullDownRefresh()
-      currentGrocerys = res.data
-      this.setData({
-        grocery_list: currentGrocerys
-      })
+    ])).count()
+    const total = countResult.total
+    console.log('数据的条数有'+total)
+    // 计算需分几次取
+    const batchTimes = Math.ceil(total / MAX_LIMIT)
+    // 承载所有读操作的 promise 的数组
+    const tasks = []
+    for (let i = 0; i < batchTimes; i++) {
+      const promise = db.collection('grocery').where(_.or([
+        {
+          to: _.eq('admin')
+        }
+      ])).skip(i * MAX_LIMIT).limit(MAX_LIMIT).get()
+      tasks.push(promise)
+    }
+    // 等待所有
+    let res =  (await Promise.all(tasks)).reduce((acc, cur) => {
+      return {
+        data: acc.data.concat(cur.data),
+        errMsg: acc.errMsg,
+      }
+    })
+    console.log(res)
+    Toast.clear()
+    wx.stopPullDownRefresh()
+    currentGrocerys = res.data
+    this.setData({
+      grocery_list: currentGrocerys
     })
   },
 

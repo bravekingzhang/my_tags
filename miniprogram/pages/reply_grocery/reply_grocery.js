@@ -1,6 +1,5 @@
 // miniprogram/pages/reply_grocery/reply_grocery.js
 import Toast from '../../miniprogram_npm/vant-weapp/toast/toast'
-
 Page({
 
   /**
@@ -43,7 +42,8 @@ Page({
       wx.stopPullDownRefresh()
       if (res.data.length >= 1) {
         this.setData({
-          grocery: res.data[0]
+          grocery: res.data[0],
+          message: res.data[0].answer || ''
         })
       } else {
         wx.navigateBack()
@@ -77,10 +77,15 @@ Page({
   },
   //设置提问人的状态已被回答
   setStates: function (message) {
-    const db = wx.cloud.database()
-    db.collection('grocery').doc(this.data.grocery._id).update({
+    console.log(message)
+    console.log(this.data.grocery._id)
+    // 当然 promise 方式也是支持的
+    //update方法需要使用云函数才能成功，呵呵
+    wx.cloud.callFunction({
+      name: 'grocery',
       data: {
-        'answer_status': 1
+        _id: this.data.grocery._id,
+        message: message
       }
     }).then(res => {
       this.addMessage(message)
@@ -146,7 +151,6 @@ Page({
       }
     })
   },
-
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
