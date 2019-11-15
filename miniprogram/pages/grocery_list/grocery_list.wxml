@@ -2,7 +2,7 @@
 <view class="container">
 
     <view class="questions-list">
-        <view class="question-item-card" wx:for="{{grocery_list}}" wx:for-index="idx" wx:key="idx" wx:for-item="item" data-id="{{item._id}}"  bindtouchend='onGroceryItemClick'>
+        <view class="question-item-card" wx:for="{{grocery_list}}" wx:for-index="idx" wx:key="idx" wx:for-item="item" data-id="{{item._id}}"  bindtap='onGroceryItemClick'>
             <view class="question-item-card-user-info">
                 <image class="question-item-card-icon" src="{{item.avatarUrl}}"></image>
                 <text class="question-item-card-nick">{{item.nick}}</text>

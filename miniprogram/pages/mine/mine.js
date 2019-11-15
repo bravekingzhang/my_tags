@@ -93,5 +93,10 @@ Page({
     wx.navigateTo({
       url: '../../pages/grocery_list/grocery_list'
     })
+  },
+  toSendMsg:function(){
+    wx.navigateTo({
+      url: '../../pages/pushMsg/pushMsg',
+    })
   }
 })

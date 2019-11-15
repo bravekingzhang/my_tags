@@ -9,7 +9,8 @@
     "pages/chooseLib/chooseLib",
     "pages/grocery/grocery",
     "pages/grocery_list/grocery_list",
-    "pages/reply_grocery/reply_grocery"
+    "pages/reply_grocery/reply_grocery",
+    "pages/pushMsg/pushMsg"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -59,5 +60,6 @@
     "van-button": "miniprogram_npm/vant-weapp/button/index",
     "van-rate": "miniprogram_npm/vant-weapp/rate/index",
     "van-panel": "miniprogram_npm/vant-weapp/panel/index"
-  }
+  },
+  "sitemapLocation": "sitemap.json"
 }

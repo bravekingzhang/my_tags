@@ -9,7 +9,8 @@ Page({
   data: {
     _id: '',
     grocery: null,
-    message: ''
+    message: '',
+    fromid:''
   },
 
   /**
@@ -64,6 +65,10 @@ Page({
     })
   },
   onPost: function (event) {
+    console.log('我获取到的formid是' + event.detail.formId)
+    this.setData({
+      formid: event.detail.formId
+    })
     if (this.data.message && this.data.message !== '') {
       this.setStates(this.data.message)
     } else {
@@ -84,6 +89,26 @@ Page({
   },
   //
   addMessage: function (message) {
+
+    ///消息推送
+    wx.cloud.callFunction({
+      name: 'pushMsg',
+      data: {
+        formId: this.data.formid,
+        toUser: this.data.grocery._openid,
+        nick:this.data.grocery.nick,
+        msg:this.data.grocery.question,
+        content:message
+      },
+      success(res) {
+        console.log(res)
+      },
+      failed(err) {
+        console.log(err)
+      }
+
+    })
+
     const db = wx.cloud.database()
     let that = this
     let gender = '管理员'

@@ -11,7 +11,8 @@ Page({
     requestResult: '',
     show: false,
     openId: '',
-    inputTag: ''
+    inputTag: '',
+    formid:''
   },
   onPullDownRefresh () {
     this.initData()

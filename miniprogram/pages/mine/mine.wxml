@@ -1,29 +1,30 @@
 <!--index.wxml-->
 <view class="container">
-    <view class="userinfo">
-        <block wx:if="{{!hasUserInfo}}">
-            <image class='user-icon-img' src='../../images/people.png'/>
-            <button class="user-icon-button" open-type="getUserInfo" bindgetuserinfo="getUserInfo" hover-class="none">
-            </button>
-            <view class="userinfo-nickname-un-login">(路人甲)点击图像登录</view>
-        </block>
-        <block wx:else>
-            <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-            <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-        </block>
-    </view>
-    <view class="feed-back" bindtap="feedback">
-        <view class="feed-back-text">反馈</view>
-        <van-icon class="feed-back-icon" name="arrow" size="45rpx" color="#5d1049"/>
-    </view>
-    <view wx:if="{{show_grocery_list}}" class="feed-back" bindtap="grocery_answer">
-        <view class="feed-back-text">杂货店问题</view>
-        <van-icon class="feed-back-icon" name="arrow" size="45rpx" color="#5d1049"/>
-    </view>
-    <view class="desc">
-        <text class="user-motto">{{desc}}</text>
-    </view>
-    <view class="version">
-        <text class="version">当前版本：版本{{version}}</text>
-    </view>
+  <view class="userinfo">
+    <block wx:if="{{!hasUserInfo}}">
+      <image class='user-icon-img' src='../../images/people.png' />
+      <button class="user-icon-button" open-type="getUserInfo" bindgetuserinfo="getUserInfo" hover-class="none">
+      </button>
+      <view class="userinfo-nickname-un-login">(路人甲)点击图像登录</view>
+    </block>
+    <block wx:else>
+      <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view>
+  <view class="feed-back" bindtap="feedback">
+    <view class="feed-back-text">反馈</view>
+    <van-icon class="feed-back-icon" name="arrow" size="45rpx" color="#5d1049" />
+  </view>
+  <view wx:if="{{show_grocery_list}}" class="feed-back" bindtap="grocery_answer">
+    <view class="feed-back-text">杂货店问题</view>
+    <van-icon class="feed-back-icon" name="arrow" size="45rpx" color="#5d1049" />
+  </view>
+
+  <view class="desc">
+    <text class="user-motto">{{desc}}</text>
+  </view>
+  <view class="version">
+    <text class="version">当前版本：版本{{version}}</text>
+  </view>
 </view>

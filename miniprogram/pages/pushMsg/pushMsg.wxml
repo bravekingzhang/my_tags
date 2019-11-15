@@ -1,0 +1,5 @@
+<!--miniprogram/pages/pushMsg/pushMsg.wxml-->
+<form report-submit='true' bindsubmit='getFormid'>
+<button form-type='submit'>获取formid</button>
+</form>
+<button bindtap='sendMsg'>发送模板消息</button>
